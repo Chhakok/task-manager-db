@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="container box-container">
+      <div class="row">
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 task-manager-box">
+          <h2>Task Manager</h2>
+          <div class="input-box">
+            <label for="txt-Ttask"> <i class="fa-solid fa-marker"></i><span> Task Title</span></label>
+            <input type="text" id="txt-Ttask" placeholder="Enter Task Title">
+            <label for="txt-Dtask"><i class="fa-regular fa-note-sticky"></i><span> Description</span></label>
+            <input type="text" id="txt-Dtask" placeholder="Enter Description">
+
+            <div class="btn-add-cancel">
+              <button id="btn-add">
+                <i class="fa-solid fa-plus"></i> <span>Add Task</span>
+              </button>
+
+              <button id="btn-cancel">
+                <span>Cancel</span>
+              </button>
+            </div>
+          </div>
+          <div class="data-box">
+
+            <!-- 
+
+            <div id="data">
+              <div class="box-task">
+                <h6 id="t-task">titdaddafadafaffale : </h6>
+                <p id="d-task">descrdafdadfafasdfasf fadfasfasdfas afadfasdfdsfasfsadfasfafasdiption</p>
+              </div>
+              <div class="box-btn">
+                <button id="btn-edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button id="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+              </div>
+            </div>
+            
+            -->
+
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="frm-popup">
+        <h5>Delete Task?</h5>
+        <h6>Are you sure you want to delete this task?</h6>
+        <div class="btn-yes-no">
+
+          <input type="button" value="NO" id="btn-no-del">
+          <input type="button" value="Yes" id="btn-yes-del">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+
+<script src="function.js"></script>
+
+</html>
