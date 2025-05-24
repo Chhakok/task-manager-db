@@ -3,8 +3,17 @@ const mysql = require('mysql2');
 const cors = require('cors');
 
 const app = express();
+
+
+// Middleware
+app.use(cors({
+  origin: '*', // or limit to specific IP/client
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+}));
 app.use(cors());
 app.use(express.json()); // for parsing JSON
+
+
 
 // Connect to MySQL
 const db = mysql.createConnection({
@@ -59,4 +68,12 @@ app.delete('/tasks/:id', (req, res) => {
 });
 
 const PORT =3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+
+
+
+

@@ -1,3 +1,18 @@
+
+// .then(res => res.json())
+// .then(data => console.log(data))
+// .catch(err => console.error(err));
+
+const baseURL = 'http://192.168.1.2:3000'; // Use your actual PC LAN IP
+
+fetch(`${baseURL}/tasks`, {
+  method: 'Get',
+  headers: {'Content-Type': 'application/json'},
+  
+})
+
+
+
 // ==============================
 // Task List Array to store tasks
 // ==============================
@@ -144,13 +159,29 @@ function validator() {
 // ==============================
 
 // Load all tasks from server on page load
+// async function loadTasks() {
+//   const res = await fetch('http://localhost:3000/tasks');
+//   const tasks = await res.json();
+//   taskList.length = 0;
+//   taskList.push(...tasks);
+//   showListTask(); // Display tasks
+// }
+
+
 async function loadTasks() {
-  const res = await fetch('http://localhost:3000/tasks');
-  const tasks = await res.json();
-  taskList.length = 0;
-  taskList.push(...tasks);
-  showListTask(); // Display tasks
+  try {
+    const res = await fetch('http://192.168.1.2:3000/tasks');
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+    const tasks = await res.json();
+    taskList.length = 0;
+    taskList.push(...tasks);
+    showListTask();
+  } catch (error) {
+    console.error('Failed to load tasks:', error);
+    alert('Error loading tasks from server. See console for details.');
+  }
 }
+
 window.onload = loadTasks;
 
 // Add new task to server
@@ -162,7 +193,7 @@ async function AddData() {
     description: txtDtask.value
   };
 
-  const res = await fetch('http://localhost:3000/tasks', {
+  const res = await fetch('http://192.168.1.2:3000/tasks', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newTask)
@@ -185,7 +216,7 @@ async function editData() {
 
   const taskId = taskList[x].id;
 
-  await fetch(`http://localhost:3000/tasks/${taskId}`, {
+  await fetch(`http://192.168.1.2:3000/tasks/${taskId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(updatedTask)
@@ -201,7 +232,7 @@ async function editData() {
 async function deleteTask(index) {
   const taskId = taskList[index].id;
 
-  await fetch(`http://localhost:3000/tasks/${taskId}`, {
+  await fetch(`http://192.168.1.2:3000/tasks/${taskId}`, {
     method: 'DELETE'
   });
 
